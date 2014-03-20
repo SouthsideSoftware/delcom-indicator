@@ -1,17 +1,16 @@
 {
   "name": "delcom-indicator",
-  "version": "0.0.1",
+  "version": "0.1.3",
   "description": "A library to drive the Declom Visual Indicator (http://www.delcomproducts.com/products_usblmp.asp)",
   "dependencies": {
-    "node-hid": "~0.3.1",
-    "underscore": "~1.6.0",
-    "sleep": "~1.1.3"
+    "node-hid": "~0.3.1"
   },
   "devDependencies": {
     "grunt": "~0.4.4",
     "mocha": "~1.18.0",
     "should": "~3.1.3",
-    "grunt-mocha-test": "~0.10.0"
+    "grunt-mocha-test": "~0.10.0",
+    "sleep": "~1.1.3"
   },
   "repository": {
     "type": "git",
@@ -20,5 +19,6 @@
   "engines" : { "node" : ">=0.10.24" },
   "author": "Southside Software LLC <info@southsidesoft.com> (http://www.southsidesoft.com)",
   "license": "MIT",
-  "engines" : ""
+  "engines" : "",
+  "keywords": ["node-hid", "delcom", "buildlight"]
 }

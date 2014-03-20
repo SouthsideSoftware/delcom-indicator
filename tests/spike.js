@@ -1,5 +1,4 @@
 var should = require('should');
-var _und = require('underscore');
 var sleep = require('sleep');
 var DelcomIndicator = require('../DelcomIndicator');
 
