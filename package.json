@@ -1,5 +1,5 @@
 {
-  "name": "DelcomIndicator",
+  "name": "delcom-indicator",
   "version": "0.0.1",
   "description": "A library to drive the Declom Visual Indicator (http://www.delcomproducts.com/products_usblmp.asp)",
   "dependencies": {
@@ -15,10 +15,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/SouthsideSoftware/DelcomIndicator"
+    "url": "https://github.com/SouthsideSoftware/delcom-indicator"
   },
   "engines" : { "node" : ">=0.10.24" },
-  "author": "Southside Software LLC <info@southsidesoft.com> (http://www.southsidesof.com)",
+  "author": "Southside Software LLC <info@southsidesoft.com> (http://www.southsidesoft.com)",
   "license": "MIT",
   "engines" : ""
 }
