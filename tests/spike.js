@@ -1,3 +1,6 @@
+//These tests require that the Delcom Indicator is plugged in and accessible
+//See readme.md in root for more information
+
 var should = require('should');
 var sleep = require('sleep');
 var DelcomIndicator = require('../DelcomIndicator');
@@ -6,7 +9,7 @@ describe('DelcomIndicator', function(){
     it ('should find Delcom device', function(){
         var delcomIndicator = new DelcomIndicator();
         try{
-            delcomIndicator.isConnected().should.equal(true, 'Delcom USB Indicator should be found')
+            delcomIndicator.isConnected().should.equal(true, 'Delcom USB Indicator should be plugged in and accessible when running tests')
         } finally {
             delcomIndicator.close();
         }
