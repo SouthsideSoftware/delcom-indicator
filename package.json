@@ -1,6 +1,6 @@
 {
   "name": "delcom-indicator",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "A library to drive the Declom Visual Indicator (http://www.delcomproducts.com/products_usblmp.asp)",
   "dependencies": {
     "node-hid": "~0.3.1"
