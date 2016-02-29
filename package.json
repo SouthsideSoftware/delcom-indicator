@@ -3,7 +3,7 @@
   "version": "0.1.9",
   "description": "A library to drive the Declom Visual Indicator (http://www.delcomproducts.com/products_usblmp.asp)",
   "dependencies": {
-    "node-hid": "~0.3.1"
+    "node-hid": "~0.5.1"
   },
   "devDependencies": {
     "grunt": "~0.4.4",
