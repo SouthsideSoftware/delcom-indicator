@@ -5,15 +5,12 @@ A node library to drive a [Declom Visual Indicator](http://www.delcomproducts.co
 
 ##Supported Platforms
 This library is known to work on Mac and Linux platforms where [node-hid](https://www.npmjs.org/package/node-hid) can
-be installed.  It was designed and tested on Mac OS/X 10.9.2 and Raspian (all updates installed as of March 17, 2014).
-It has not been tested on Windows but should work provided that node-hid can be installed.
+be installed.  It was designed and tested on Mac OS/X 10.9.2, Max OS/X 10.11.3 and Raspian (all updates installed as of March 12, 2016).
+It has not been tested on Windows but should work provided that node-hid can be installed.  It requires Node 4.x or higher.
 
-Node-hid requires libudev-dev and libusb-1.0-0 to install successfully.  On Raspian, you can install these using:
+Depending on your platform, Node-hid may require a compile, which adds additional dependencies.  See the [node-hid readme](https://github.com/node-hid/node-hid) for details.
 
-```shell
-sudo apt-get install libudev-dev libusb-1.0-0-dev
-```
-On Linux you also need to grant permissions to write to the Delcom device.  On Raspian, you can create a file:
+On Linux you need to grant permissions to write to the Delcom device.  On Raspian, you can create a file:
 
 ```shell
 sudo nano /etc/udev/rules.d/85-delcom.rules
@@ -28,29 +25,31 @@ SUBSYSTEM=="usb", ATTRS{idVendor}=="0fc5", ATTRS{idProduct}=="b080", ACTION=="ad
 You will have to reboot to make the rule take effect.
 
 ##Development Prerequisites
-You need to install grunt-cli globally using:
+You need to install gulp-cli globally using:
 
 ```shell
-npm install grunt-cli -g
+npm install gulp-cli -g
 ```
 
 You can then run tests using:
 
 ```shell
-grunt
+gulp
 ```
+
+The tests require you to have a Delcom USB device connected.  
 
 ##Sample Code
 
 ```javascript
-var DelcomIndicator = require('delcom-indicator');
+import DelcomIndicator from 'delcom-indicator';
 var delcomIndicator = new DelcomIndicator();
 delcomIndicator.flashRed();
 delcomIndicator.close();
 ```
 
 The test spike (tests/spike.cs) opens an attached Delcom light and runs through the available functionality by turning
-it solid greed, red and blue and then flashing each color.  It should be pretty self-explanatory.
+it solid greed, red and blue and then flashing each color.  
 
 ##Sample Application
 
