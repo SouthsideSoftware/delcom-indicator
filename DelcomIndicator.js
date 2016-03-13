@@ -2,7 +2,7 @@
 
 var hid = require('node-hid');
 
-export default class DelcomIndicator {
+class DelcomIndicator {
   constructor() {
     this.vendorId = 0xFC5;
     this.productId = 0xB080;
@@ -104,3 +104,5 @@ export default class DelcomIndicator {
     }
   }
 }
+
+module.exports = DelcomIndicator

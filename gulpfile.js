@@ -1,6 +1,5 @@
 const gulp = require('gulp');
 const mocha = require('gulp-mocha');
-require('babel-core/register');
 
 gulp.task('default', () => {
   return gulp.src('tests/**/*.js', {read: false})

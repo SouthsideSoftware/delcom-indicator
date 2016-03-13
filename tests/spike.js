@@ -1,6 +1,6 @@
 var should = require('should');
 var sleep = require('sleep');
-import DelcomIndicator from '../';
+var DelcomIndicator = require('../DelcomIndicator');
 
 describe('DelcomIndicator', function () {
   it('should find Delcom device', function () {
