@@ -36,7 +36,7 @@ npm install gulp-cli -g
 You can then run tests using:
 
 ```shell
-ggulp
+gulp
 ```
 
 The tests require you to have a Delcom USB device connected.  
