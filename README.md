@@ -44,7 +44,8 @@ The tests require you to have a Delcom USB device connected.
 ##Sample Code
 
 ```javascript
-import DelcomIndicator from 'delcom-indicator';
+var DelcomIndicator = require('delcom-indicator');
+
 var delcomIndicator = new DelcomIndicator();
 delcomIndicator.flashRed();
 delcomIndicator.close();
