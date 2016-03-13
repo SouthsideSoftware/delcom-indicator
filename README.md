@@ -3,6 +3,8 @@ delcom-indicator
 
 A node library to drive a [Declom Visual Indicator](http://www.delcomproducts.com/products_usblmp.asp)
 
+Our development roadmap is on the [delcom-indicator Trello board](https://trello.com/b/m7d4l8qx/delcom-indicator)
+
 ##Supported Platforms
 This library is known to work on Mac and Linux platforms where [node-hid](https://www.npmjs.org/package/node-hid) can
 be installed.  It was designed and tested on Mac OS/X 10.9.2, Max OS/X 10.11.3 and Raspian (all updates installed as of March 12, 2016).
