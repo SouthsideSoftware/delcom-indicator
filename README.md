@@ -5,6 +5,28 @@ A node library to drive a [Declom Visual Indicator](http://www.delcomproducts.co
 
 Our development roadmap is on the [delcom-indicator Trello board](https://trello.com/b/m7d4l8qx/delcom-indicator)
 
+##Install
+```
+npm install delcom-indicator
+```
+
+##Use
+```
+var DelcomIndicator = require('delcom-indicator');
+
+var delcomIndicator = new DelcomIndicator();
+delcomIndicator.flashRed();
+delcomIndicator.close();
+```
+
+A more complete example is found in tests/spike.cs. The test opens an attached Delcom light and runs through the available 
+functionality by turning it solid greed, red and blue and then flashing each color.  
+
+##Related Application
+
+A [Build Light indicator for TeamCity](https://github.com/SouthsideSoftware/teamcity-buildlight) that utilizes this
+library to show the status of builds.
+
 ##Supported Platforms
 This library is known to work on Mac and Linux platforms where [node-hid](https://www.npmjs.org/package/node-hid) can
 be installed.  It was designed and tested on Mac OS/X 10.9.2, Max OS/X 10.11.3 and Raspian (all updates installed as of March 12, 2016).
@@ -41,23 +63,7 @@ gulp
 
 The tests require you to have a Delcom USB device connected.  
 
-##Sample Code
 
-```javascript
-var DelcomIndicator = require('delcom-indicator');
-
-var delcomIndicator = new DelcomIndicator();
-delcomIndicator.flashRed();
-delcomIndicator.close();
-```
-
-The test spike (tests/spike.cs) opens an attached Delcom light and runs through the available functionality by turning
-it solid greed, red and blue and then flashing each color.  
-
-##Sample Application
-
-A [Build Light indicator for TeamCity](https://github.com/SouthsideSoftware/teamcity-buildlight) that utilizes this
-library to show the status of builds.
 
 
 
