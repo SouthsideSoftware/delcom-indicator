@@ -2,91 +2,54 @@ var should = require('should');
 var sleep = require('sleep');
 var DelcomIndicator = require('../DelcomIndicator');
 
+const secondsToSleep = 4;
+
 describe('DelcomIndicator', function () {
+
+  var delcomIndicator;
+
+  beforeEach(function () {
+    delcomIndicator = new DelcomIndicator();
+    delcomIndicator.turnOff();
+  });
+
+  afterEach(function () {
+    sleep.sleep(secondsToSleep);
+    delcomIndicator.turnOff();
+    delcomIndicator.close();
+  });
+
   it('should find Delcom device', function () {
-    var delcomIndicator = new DelcomIndicator();
-    try {
-      delcomIndicator.isConnected().should.equal(true, 'Delcom USB Indicator should be found')
-    } finally {
-      delcomIndicator.close();
-    }
+    delcomIndicator.isConnected().should.equal(true, 'Delcom USB Indicator should be found')
   });
 
   it('should set green solid led', function () {
-    var delcomIndicator = new DelcomIndicator();
-    try {
-      delcomIndicator.turnOff();
-      delcomIndicator.solidGreen();
-      console.log("Should be green");
-      sleep.sleep(5);
-    } finally {
-      delcomIndicator.turnOff();
-      delcomIndicator.close();
-    }
+    delcomIndicator.solidGreen();
+    console.log("Should be green");
   });
 
   it('should set red solid led', function () {
-    var delcomIndicator = new DelcomIndicator();
-    try {
-      delcomIndicator.turnOff();
-      delcomIndicator.solidRed();
-      console.log("Should be red");
-      sleep.sleep(5);
-    } finally {
-      delcomIndicator.turnOff();
-      delcomIndicator.close();
-    }
+    delcomIndicator.solidRed();
+    console.log("Should be red");
   });
 
-  it('should set blue solid led', function () {
-    var delcomIndicator = new DelcomIndicator();
-    try {
-      delcomIndicator.turnOff();
-      delcomIndicator.solidBlue();
-      console.log("Should be blue");
-      sleep.sleep(5);
-    } finally {
-      delcomIndicator.turnOff();
-      delcomIndicator.close();
-    }
+  it('should set blue or yellow solid led', function () {
+    delcomIndicator.solidBlue();
+    console.log("Should be blue or yellow");
   });
 
   it('should set green flashing led', function () {
-    var delcomIndicator = new DelcomIndicator();
-    try {
-      delcomIndicator.turnOff();
-      delcomIndicator.flashGreen();
-      console.log("Should be flashing green");
-      sleep.sleep(5);
-    } finally {
-      delcomIndicator.turnOff();
-      delcomIndicator.close();
-    }
+    delcomIndicator.flashGreen();
+    console.log("Should be flashing green");
   });
 
   it('should set red flashing led', function () {
-    var delcomIndicator = new DelcomIndicator();
-    try {
-      delcomIndicator.turnOff();
-      delcomIndicator.flashRed();
-      console.log("Should be flashing red");
-      sleep.sleep(5);
-    } finally {
-      delcomIndicator.turnOff();
-      delcomIndicator.close();
-    }
+    delcomIndicator.flashRed();
+    console.log("Should be flashing red");
   });
 
-  it('should set blue flashing led', function () {
-    var delcomIndicator = new DelcomIndicator();
-    try {
-      delcomIndicator.turnOff();
-      delcomIndicator.flashBlue();
-      console.log("Should be flashing blue");
-      sleep.sleep(5);
-    } finally {
-      delcomIndicator.turnOff();
-      delcomIndicator.close();
-    }
+  it('should set blue or yellow flashing led', function () {
+    delcomIndicator.flashBlue();
+    console.log("Should be flashing blue or yellow");
   });
 });
