@@ -22,6 +22,24 @@ class DelcomIndicator {
     }
   }
 
+  padValues(values, minLength) {
+    while (values.length < minLength) {
+      values.push(0);
+    }
+    return values;
+  }
+
+  writeToDevice(values) {
+    if (!this.isOpen()) {
+      throw "Device is not open";
+    }
+    if (process.platform === 'win32') {
+      this.deviceConnection.sendFeatureReport(this.padValues(values, 8));
+    } else {
+      this.deviceConnection.write(values);
+    }
+  }
+
   findDevice() {
     var devices = hid.devices(this.vendorId, this.productId);
     if (devices !== undefined) {
@@ -45,63 +63,35 @@ class DelcomIndicator {
   }
 
   solidGreen() {
-    if (this.isOpen()) {
-      this.deviceConnection.write([this.write, this.solid, this.green]);
-    } else {
-      throw "Device is not open";
-    }
+    this.writeToDevice([this.write, this.solid, this.green]);
   }
 
   solidRed() {
-    if (this.isOpen()) {
-      this.deviceConnection.write([this.write, this.solid, this.red]);
-    } else {
-      throw "Device is not open";
-    }
+    this.writeToDevice([this.write, this.solid, this.red]);
   }
 
   solidBlue() {
-    if (this.isOpen()) {
-      this.deviceConnection.write([this.write, this.solid, this.blue]);
-    } else {
-      throw "Device is not open";
-    }
+    this.writeToDevice([this.write, this.solid, this.blue]);
   }
 
   flashGreen() {
-    if (this.isOpen()) {
-      this.deviceConnection.write([this.write, this.solid, this.green]);
-      this.deviceConnection.write([this.write, this.flash, 0, 1]);
-    } else {
-      throw "Device is not open";
-    }
+    this.writeToDevice([this.write, this.solid, this.green]);
+    this.writeToDevice([this.write, this.flash, 0, 1]);
   }
 
   flashRed() {
-    if (this.isOpen()) {
-      this.deviceConnection.write([this.write, this.flash, this.red]);
-      this.deviceConnection.write([this.write, this.flash, 0, 2]);
-    } else {
-      throw "Device is not open";
-    }
+    this.writeToDevice([this.write, this.flash, this.red]);
+    this.writeToDevice([this.write, this.flash, 0, 2]);
   }
 
   flashBlue() {
-    if (this.isOpen()) {
-      this.deviceConnection.write([this.write, this.flash, this.blue]);
-      this.deviceConnection.write([this.write, this.flash, 0, 4]);
-    } else {
-      throw "Device is not open";
-    }
+    this.writeToDevice([this.write, this.flash, this.blue]);
+    this.writeToDevice([this.write, this.flash, 0, 4]);
   }
 
   turnOff() {
-    if (this.isOpen()) {
-      this.deviceConnection.write([this.write, this.solid, this.off]);
-      this.deviceConnection.write([this.write, this.flash, this.off]);
-    } else {
-      throw "Device is not open";
-    }
+    this.writeToDevice([this.write, this.solid, this.off]);
+    this.writeToDevice([this.write, this.flash, this.off]);
   }
 }
 
