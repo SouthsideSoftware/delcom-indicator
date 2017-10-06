@@ -74,6 +74,10 @@ class DelcomIndicator {
     this.writeToDevice([this.write, this.solid, this.blue]);
   }
 
+  solidYellow() {
+    this.solidBlue();
+  }
+
   flashGreen() {
     this.writeToDevice([this.write, this.solid, this.green]);
     this.writeToDevice([this.write, this.flash, 0, 1]);
@@ -87,6 +91,10 @@ class DelcomIndicator {
   flashBlue() {
     this.writeToDevice([this.write, this.flash, this.blue]);
     this.writeToDevice([this.write, this.flash, 0, 4]);
+  }
+
+  flashYellow() {
+    this.flashBlue();
   }
 
   turnOff() {
