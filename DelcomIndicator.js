@@ -11,11 +11,13 @@ class DelcomIndicator {
     this.red = 0xFD;
     this.blue = 0xFB;
     this.off = 0xFF;
+    this.buzzerOn = 1;
 
-    this.solid = 2;
     this.write8bytes = 101;
     this.write16bytes = 102;
-    this.flash = 20;
+    this.solidCommand = 2;
+    this.flashCommand = 20;
+    this.buzzCommand = 70;
 
     this.device = this.findDevice();
     if (this.device) {
@@ -64,15 +66,15 @@ class DelcomIndicator {
   }
 
   solidGreen() {
-    this.writeToDevice([this.write8bytes, this.solid, this.green]);
+    this.writeToDevice([this.write8bytes, this.solidCommand, this.green]);
   }
 
   solidRed() {
-    this.writeToDevice([this.write8bytes, this.solid, this.red]);
+    this.writeToDevice([this.write8bytes, this.solidCommand, this.red]);
   }
 
   solidBlue() {
-    this.writeToDevice([this.write8bytes, this.solid, this.blue]);
+    this.writeToDevice([this.write8bytes, this.solidCommand, this.blue]);
   }
 
   solidYellow() {
@@ -80,18 +82,18 @@ class DelcomIndicator {
   }
 
   flashGreen() {
-    this.writeToDevice([this.write8bytes, this.solid, this.green]);
-    this.writeToDevice([this.write8bytes, this.flash, 0, 1]);
+    this.writeToDevice([this.write8bytes, this.solidCommand, this.green]);
+    this.writeToDevice([this.write8bytes, this.flashCommand, 0, 1]);
   }
 
   flashRed() {
-    this.writeToDevice([this.write8bytes, this.flash, this.red]);
-    this.writeToDevice([this.write8bytes, this.flash, 0, 2]);
+    this.writeToDevice([this.write8bytes, this.flashCommand, this.red]);
+    this.writeToDevice([this.write8bytes, this.flashCommand, 0, 2]);
   }
 
   flashBlue() {
-    this.writeToDevice([this.write8bytes, this.flash, this.blue]);
-    this.writeToDevice([this.write8bytes, this.flash, 0, 4]);
+    this.writeToDevice([this.write8bytes, this.flashCommand, this.blue]);
+    this.writeToDevice([this.write8bytes, this.flashCommand, 0, 4]);
   }
 
   flashYellow() {
@@ -99,8 +101,8 @@ class DelcomIndicator {
   }
 
   turnOff() {
-    this.writeToDevice([this.write8bytes, this.solid, this.off]);
-    this.writeToDevice([this.write8bytes, this.flash, this.off]);
+    this.writeToDevice([this.write8bytes, this.solidCommand, this.off]);
+    this.writeToDevice([this.write8bytes, this.flashCommand, this.off]);
   }
 
   /*
@@ -128,7 +130,7 @@ class DelcomIndicator {
     +-----------+----------+-----------+----------+-----------+----------+
   */
   buzz(frequency, repeatCount, onTime, offTime) {
-    this.writeToDevice([this.write16bytes, 70, 1, frequency, 0, 0, 0, 0, repeatCount, onTime, offTime, 0, 0, 0, 0, 0]);
+    this.writeToDevice([this.write16bytes, this.buzzCommand, this.buzzerOn, frequency, 0, 0, 0, 0, repeatCount, onTime, offTime, 0, 0, 0, 0, 0]);
   }
 }
 
