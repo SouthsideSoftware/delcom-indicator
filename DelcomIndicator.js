@@ -13,7 +13,8 @@ class DelcomIndicator {
     this.off = 0xFF;
 
     this.solid = 2;
-    this.write = 101;
+    this.write8bytes = 101;
+    this.write16bytes = 102;
     this.flash = 20;
 
     this.device = this.findDevice();
@@ -63,15 +64,15 @@ class DelcomIndicator {
   }
 
   solidGreen() {
-    this.writeToDevice([this.write, this.solid, this.green]);
+    this.writeToDevice([this.write8bytes, this.solid, this.green]);
   }
 
   solidRed() {
-    this.writeToDevice([this.write, this.solid, this.red]);
+    this.writeToDevice([this.write8bytes, this.solid, this.red]);
   }
 
   solidBlue() {
-    this.writeToDevice([this.write, this.solid, this.blue]);
+    this.writeToDevice([this.write8bytes, this.solid, this.blue]);
   }
 
   solidYellow() {
@@ -79,18 +80,18 @@ class DelcomIndicator {
   }
 
   flashGreen() {
-    this.writeToDevice([this.write, this.solid, this.green]);
-    this.writeToDevice([this.write, this.flash, 0, 1]);
+    this.writeToDevice([this.write8bytes, this.solid, this.green]);
+    this.writeToDevice([this.write8bytes, this.flash, 0, 1]);
   }
 
   flashRed() {
-    this.writeToDevice([this.write, this.flash, this.red]);
-    this.writeToDevice([this.write, this.flash, 0, 2]);
+    this.writeToDevice([this.write8bytes, this.flash, this.red]);
+    this.writeToDevice([this.write8bytes, this.flash, 0, 2]);
   }
 
   flashBlue() {
-    this.writeToDevice([this.write, this.flash, this.blue]);
-    this.writeToDevice([this.write, this.flash, 0, 4]);
+    this.writeToDevice([this.write8bytes, this.flash, this.blue]);
+    this.writeToDevice([this.write8bytes, this.flash, 0, 4]);
   }
 
   flashYellow() {
@@ -98,8 +99,8 @@ class DelcomIndicator {
   }
 
   turnOff() {
-    this.writeToDevice([this.write, this.solid, this.off]);
-    this.writeToDevice([this.write, this.flash, this.off]);
+    this.writeToDevice([this.write8bytes, this.solid, this.off]);
+    this.writeToDevice([this.write8bytes, this.flash, this.off]);
   }
 
   /*
@@ -127,7 +128,7 @@ class DelcomIndicator {
     +-----------+----------+-----------+----------+-----------+----------+
   */
   buzz(frequency, repeatCount, onTime, offTime) {
-    this.writeToDevice([102, 70, 1, frequency, 0, 0, 0, 0, repeatCount, onTime, offTime, 0, 0, 0, 0, 0]);
+    this.writeToDevice([this.write16bytes, 70, 1, frequency, 0, 0, 0, 0, repeatCount, onTime, offTime, 0, 0, 0, 0, 0]);
   }
 }
 
