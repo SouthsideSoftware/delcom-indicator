@@ -3,7 +3,7 @@ var DelcomIndicator = require('../DelcomIndicator');
 
 const msToWait = 4000;
 
-describe('DelcomIndicator', function () {
+describe('DelcomIndicator Light', function () {
 
   var delcomIndicator;
 
