@@ -27,3 +27,9 @@ gulp.task('buzzer', () => {
       timeout: 30000}
     ));
 });
+
+gulp.task('button', () => {
+  return gulp.src('tests/**/*button*.js', {read: false})
+    // gulp-mocha needs filepaths so you can't have any plugins before it
+    .pipe(mocha({timeout: 30000}));
+});

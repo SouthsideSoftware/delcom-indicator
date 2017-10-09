@@ -19,6 +19,8 @@ class DelcomIndicator {
     this.solidCommand = 2;
     this.flashCommand = 20;
     this.buzzCommand = 70;
+    this.readButtonCommand = 8;
+    this.readButtonCommandLength = 8;
 
     this.device = this.findDevice();
     if (this.device) {
@@ -33,7 +35,7 @@ class DelcomIndicator {
     }
     while (values.length < desiredLength) {
       values.push(0);
-    }    
+    }
     return values;
   }
 
@@ -141,6 +143,11 @@ class DelcomIndicator {
   turnOffBuzzer() {
     this.writeToDevice([this.write16bytes, this.buzzCommand, this.buzzerOff]);
   }
+
+  readButtonState() {
+    return this.deviceConnection.getFeatureReport(this.readButtonCommand, this.readButtonCommandLength);
+  }
+
 }
 
 module.exports = DelcomIndicator
