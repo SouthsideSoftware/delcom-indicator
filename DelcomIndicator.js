@@ -12,6 +12,7 @@ class DelcomIndicator {
     this.blue = 0xFB;
     this.off = 0xFF;
     this.buzzerOn = 1;
+    this.buzzerOff = 0;
 
     this.write8bytes = 101;
     this.write16bytes = 102;
@@ -131,6 +132,10 @@ class DelcomIndicator {
   */
   buzz(frequency, repeatCount, onTime, offTime) {
     this.writeToDevice([this.write16bytes, this.buzzCommand, this.buzzerOn, frequency, 0, 0, 0, 0, repeatCount, onTime, offTime, 0, 0, 0, 0, 0]);
+  }
+
+  turnOffBuzzer() {
+    this.writeToDevice([this.write16bytes, this.buzzCommand, this.buzzerOff, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
   }
 }
 

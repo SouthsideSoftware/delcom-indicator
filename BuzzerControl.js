@@ -55,7 +55,6 @@ class BuzzerControl {
     var delay = 0;
     var device = this.device;
     tune.forEach(function(note) {
-      console.log('wait' + delay);
       setTimeout(function() {
         device.buzz(note[0], 1, note[1], 0);
       }, delay);

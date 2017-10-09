@@ -41,6 +41,16 @@ describe('DelcomIndicator Buzzer', function () {
     setTimeout(done, msToWait);
   });
 
+  it('turnOffBuzzer should silence buzzer', (done) => {
+    delcomIndicator.buzz(12, 0, 1, 0); // continuous buzz - passing 0 for repeat count arg
+    console.log('should be buzzing');
+    setTimeout(() => {
+      delcomIndicator.turnOffBuzzer();
+      console.log('should have STOPPED buzzing');
+    }, msToWait / 4);
+    setTimeout(done, msToWait);
+  });
+
   it('should play the success tune', (done) => {
     buzzerControl.playTune(buzzerControl.tuneSuccess);
     console.log("Should play the success tune");
