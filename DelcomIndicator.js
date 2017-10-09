@@ -26,10 +26,14 @@ class DelcomIndicator {
     }
   }
 
-  padValues(values, minLength) {
-    while (values.length < minLength) {
-      values.push(0);
+  padValues(values) {
+    var desiredLength = 8;
+    if (values.length > 0 && values[0] === this.write16bytes) {
+      desiredLength = 16;
     }
+    while (values.length < desiredLength) {
+      values.push(0);
+    }    
     return values;
   }
 
@@ -38,7 +42,7 @@ class DelcomIndicator {
       throw "Device is not open";
     }
     if (process.platform === 'win32') {
-      this.deviceConnection.sendFeatureReport(this.padValues(values, 8));
+      this.deviceConnection.sendFeatureReport(this.padValues(values));
     } else {
       this.deviceConnection.write(values);
     }
@@ -131,11 +135,11 @@ class DelcomIndicator {
     +-----------+----------+-----------+----------+-----------+----------+
   */
   buzz(frequency, repeatCount, onTime, offTime) {
-    this.writeToDevice([this.write16bytes, this.buzzCommand, this.buzzerOn, frequency, 0, 0, 0, 0, repeatCount, onTime, offTime, 0, 0, 0, 0, 0]);
+    this.writeToDevice([this.write16bytes, this.buzzCommand, this.buzzerOn, frequency, 0, 0, 0, 0, repeatCount, onTime, offTime]);
   }
 
   turnOffBuzzer() {
-    this.writeToDevice([this.write16bytes, this.buzzCommand, this.buzzerOff, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    this.writeToDevice([this.write16bytes, this.buzzCommand, this.buzzerOff]);
   }
 }
 
