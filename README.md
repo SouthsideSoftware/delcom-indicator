@@ -1,7 +1,7 @@
 delcom-indicator
 ===============
 
-A node library to drive a [Declom Visual Indicator](http://www.delcomproducts.com/products_usblmp.asp)
+A node library to drive a [Delcom Visual Indicator](http://www.delcomproducts.com/products_usblmp.asp)
 
 Our development roadmap is on the [delcom-indicator Trello board](https://trello.com/b/m7d4l8qx/delcom-indicator)
 
