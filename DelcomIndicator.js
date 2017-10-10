@@ -72,16 +72,20 @@ class DelcomIndicator {
     }
   }
 
+  solidColor(colorBits) {
+    this.writeToDevice([this.write8bytes, this.solidCommand, colorBits]);
+  }
+
   solidGreen() {
-    this.writeToDevice([this.write8bytes, this.solidCommand, this.green]);
+    this.solidColor(this.green);
   }
 
   solidRed() {
-    this.writeToDevice([this.write8bytes, this.solidCommand, this.red]);
+    this.solidColor(this.red);
   }
 
   solidBlue() {
-    this.writeToDevice([this.write8bytes, this.solidCommand, this.blue]);
+    this.solidColor(this.blue);
   }
 
   solidYellow() {

@@ -39,6 +39,25 @@ describe('DelcomIndicator Light', function () {
     setTimeout(done, msToWait);
   });
 
+  it('should set green AND red solid leds', function (done) {
+    delcomIndicator.solidColor(delcomIndicator.red & delcomIndicator.green);
+    console.log("Should be green AND red");
+    setTimeout(done, msToWait);
+  });
+
+  it('should set blue/yellow AND red solid leds', function (done) {
+    delcomIndicator.solidColor(delcomIndicator.red & delcomIndicator.blue);
+    console.log("Should be blue/yellow AND red");
+    setTimeout(done, msToWait);
+  });
+
+  it('should be solid red AND flashing blue/yellow', function (done) {
+    delcomIndicator.flashGreen();
+    delcomIndicator.solidBlue();
+    console.log("Should be solid red AND flashing blue/yellow");
+    setTimeout(done, msToWait);
+  });
+
   it('should set green flashing led', function (done) {
     delcomIndicator.flashGreen();
     console.log("Should be flashing green");
